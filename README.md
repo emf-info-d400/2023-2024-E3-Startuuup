@@ -116,7 +116,7 @@ Une fois tout ce qui précède réalisé et fonctionnel, ajoutiez ces capacités
 
 ### Startup :
 - **Calcul du résultat annuelle** : on doit pouvoir demander à la startup le résultat en CHF du coût annuel. C'est à dire la somme du salaire de la startup - la somme des projets réalisés. Le résultat peut être négatif ou positif.
-- **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen des employés de la startup. On obtiendra le salaire moyen en cHF.
+- **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen des employés de la startup. On obtiendra le salaire moyen en CHF.
 
 ### Remise
 Faites signe au professeur lorsque vous aurez terminé et que vous êtes prêt à rendre. Il vous autorisera à remettre le réseau. Rendez votre travail par push GitHub et quittez rapidement la salle en silence.
