@@ -54,7 +54,19 @@ Projets:
 - "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
 ```
 
-Enfin, affichez les détails de la startup en utilisant la méthode ci-dessous 
+
+
+### Application
+Dans le `main()` de la classe `Application`, vous devez effectuer plusieurs opérations.
+
+D'abord, créez un tableau de `startups` de 10 éléments, puis remplir ce tableau avec les informations ci-dessous :
+
+| Startup | Employés | Projets | Affectation |
+| :---: | :--- | :--- | :--- |
+| InnovateTech | - Employe: Marie Dupont, Poste: Développeur, Salaire: 50'000.00 CHF<br>- Employe: Jean Martin, Poste: Manager, Salaire: 60'000.00 CHF | - Projet: Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 2024-12-31<br>- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
+| BananaTech | - Employe: John Mackey, Poste: CIO, Salaire: 100'000.00 CHF<br>- Employe: Mireille Roduit, Poste: CEO, Salaire: 100'000.00 CHF<br>- Employe: Jeff Phyo, Poste: CFO, Salaire: 60'000.00 CHF | - Projet: Projet IA, Budget: 202'000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
+
+Enfin, affichez les détails de toutes les startups en utilisant la méthode `static afficherDetails(Startup startup)` ci-dessous 
 ```mermaid
 sequenceDiagram
 
@@ -73,16 +85,6 @@ sequenceDiagram
     end    
 ```
 
-### Application
-Dans le `main()` de la classe `Application`, vous devez effectuer plusieurs opérations.
-
-D'abord, créez un tableau de `startups` de 10 éléments, puis remplir ce tableau avec les informations ci-dessous :
-
-| Startup | Employés | Projets | Affectation |
-| :---: | :--- | :--- | :--- |
-| InnovateTech | - Employe: Marie Dupont, Poste: Développeur, Salaire: 50000.00 CHF<br>- Employe: Jean Martin, Poste: Manager, Salaire: 60000.00 CHF | - Projet: Projet Alpha, Budget: 150000.00 CHF, Date de fin: 2024-12-31<br>- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
-| BananaTech | - Employe: John Mackey, Poste: CIO, Salaire: 100000.00 CHF<br>- Employe: Mireille Roduit, Poste: CEO, Salaire: 100000.00 CHF<br>- Employe: Jeff Phyo, Poste: CFO, Salaire: 60000.00 CHF | - Projet: Projet IA, Budget: 202000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
-
 ### Exemple de résultat sur la console
 Si vous avez correctement réalisé cette application, vous devriez obtenir un affichage ressemblant à ceci pour la première startup :
 ```
@@ -95,7 +97,7 @@ Projets:
 - "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [Marie Dupont, Jean Martin]
 - "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
 La startup a 2 employés.
-Le budget total des projets est de 250'000.00 CHF.
+Le budget total des projets est de 250000.0 CHF.
 -----------------------------
 -----------------------------
 Startup: BananaTech
@@ -106,7 +108,7 @@ Employes:
 Projets:
 - "Projet IA", Budget: 220'000.00 CHF, Date de fin: 31 décembre 2024 [John Mackey, Mireille Roduit, Jeff Phyo]
 La startup a 3 employés.
-Le budget total des projets est de 220'000.00 CHF.
+Le budget total des projets est de 220000.0 CHF.
 -----------------------------
 ```
 ## Fonctionnalités supplémentaires
