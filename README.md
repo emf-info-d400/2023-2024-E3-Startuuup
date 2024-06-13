@@ -42,7 +42,7 @@ Toujours dans le package `models`, créez une classe nommée `Projet`. Un `Proje
 
 ### Startup
 Dans le package `models`, créez une classe nommée `Startup`. Une `Startup` aura plusieurs caractéristiques : le `nom`, une liste d'`employés` et une liste de `projets`. Par exemple, la startup peut s'appeler `"InnovateTech"`. Le `nom` de la startup doit être fourni lors de la création. Les listes d'employés et de projets seront initialement vides, avec une taille initiale à 0. 
-Il doit être possible d'**ajouter** et de **retirer** des employés et des projets de la startup. On doit pouvoir **affecter un employé à un projet spécifique** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté à un projet de la startup).
+Il doit être possible d'**ajouter** et de **retirer** des **employés** et **ajouter** et **supprimer** des **projets** de la startup. On doit pouvoir **affecter un employé à un projet spécifique** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté à un projet de la startup). On pourra également **calculer le budget total** des projets de la startup.
 Lorsqu'on affiche une `Startup`, celui-ci se présente sour la forme suivante :
 ```
 Startup: InnovateTech
@@ -54,8 +54,6 @@ Projets:
 - "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
 ```
 
-
-
 ### Application
 Dans le `main()` de la classe `Application`, vous devez effectuer plusieurs opérations.
 
@@ -66,7 +64,7 @@ D'abord, créez un tableau de `startups` de 10 éléments, puis remplir ce table
 | InnovateTech | - Employe: Marie Dupont, Poste: Développeur, Salaire: 50'000.00 CHF<br>- Employe: Jean Martin, Poste: Manager, Salaire: 60'000.00 CHF | - Projet: Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 2024-12-31<br>- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
 | BananaTech | - Employe: John Mackey, Poste: CIO, Salaire: 100'000.00 CHF<br>- Employe: Mireille Roduit, Poste: CEO, Salaire: 100'000.00 CHF<br>- Employe: Jeff Phyo, Poste: CFO, Salaire: 60'000.00 CHF | - Projet: Projet IA, Budget: 202'000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
 
-Enfin, affichez les détails de toutes les startups en utilisant la méthode `static afficherDetails(Startup startup)` ci-dessous 
+Enfin, affichez les détails de toutes les startups en utilisant la méthode `static afficherDetails(Startup startup)` que vous allez réaliser à l'aide du diagramme de séquence ci-dessous :
 ```mermaid
 sequenceDiagram
 
