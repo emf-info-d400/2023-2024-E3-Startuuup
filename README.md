@@ -1,4 +1,4 @@
-# 2023-2024 E3 Startuuup 4h
+# 2023-2024 E3 Startuuup
 
 # Contexte général
 Une nouvelle startup, `InnovateTech`, gère ses projets et ses employés de manière très structurée pour assurer une croissance rapide et efficace. Vous devez créer un système en Java pour gérer les employés, les projets et les affectations.
@@ -48,7 +48,7 @@ Lorsqu'on affiche une `Startup`, celui-ci se présente sour la forme suivante :
 Startup: InnovateTech
 Employes:
 - DUPONT Marie (Développeuse) [50'000.00 CHF]
-- MARTIN Jean, (Manager) [60'000.00 CHF]
+- MARTIN Jean (Manager) [60'000.00 CHF]
 Projets:
 - "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [Marie Dupont, Jean Martin]
 - "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
@@ -62,13 +62,14 @@ sequenceDiagram
         afficherDetails(Startup startup)->>System.out : println("-----------------------------")
         afficherDetails(Startup startup)->>System.out : println(startup)
 
-        afficherDetails(Startup startup)->>commande: listeCageotsALivrer()
-        activate commande
-        commande-->>afficherCommande(Commande commande): cageotsALivrer=
-        deactivate commande
+        afficherDetails(Startup startup)->>startup: listesEmployes()
+        activate startup
+        startup-->>afficherDetails(Startup startup): listesEmployes=
+        deactivate startup
 
-        afficherCommande(Commande commande)->>System.out : println("La startup a " + startup.getEmployes().length + " employés")
-        afficherCommande(Commande commande)->>System.out : println("Le budget total des projets " + startup.calculerBudgetTotal() + " Frs")
+        afficherDetails(Startup startup)->>System.out : println("La startup a " + listesEmployes.length + " employés.")
+        afficherDetails(Startup startup)->>System.out : println("Le budget total des projets est de " + startup.calculerBudgetTotal() + " CHF.")
+        afficherDetails(Startup startup)->>System.out : println("-----------------------------")
     end    
 ```
 
@@ -79,26 +80,45 @@ D'abord, créez un tableau de `startups` de 10 éléments, puis remplir ce table
 
 | Startup | Employés | Projets | Affectation |
 | :---: | :--- | :--- | :--- |
-| InnovateTech | Employe: Marie Dupont, Poste: Développeur, Salaire: 50000.00 CHF<br>Employe: Jean Martin, Poste: Manager, Salaire: 60000.00 CHF | Projet: Projet Alpha, Budget: 150000.00 CHF, Date de fin: 2024-12-31<br>Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
-| BananaTech | Employe: John Mackey, Poste: CIO, Salaire: 100000.00 CHF<br>Employe: Mireille Roduit, Poste: CEO, Salaire: 100000.00 CHF<br>Employe: Jeff Phyo, Poste: CFO, Salaire: 60000.00 CHF | Projet: Projet IA, Budget: 202000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
-
-Ajoutez ensuite les projets suivants : "Projet Alpha", avec un budget de 150 000.0 CHF et une deadline fixée au 31 décembre 2024, et "Projet Beta", avec un budget de 100 000.0 CHF et une deadline fixée au 30 novembre 2023. Affectez les employés aux projets comme suit : Marie Dupont au Projet Alpha et Jean Martin au Projet Beta. 
-
-
-
+| InnovateTech | - Employe: Marie Dupont, Poste: Développeur, Salaire: 50000.00 CHF<br>- Employe: Jean Martin, Poste: Manager, Salaire: 60000.00 CHF | - Projet: Projet Alpha, Budget: 150000.00 CHF, Date de fin: 2024-12-31<br>- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
+| BananaTech | - Employe: John Mackey, Poste: CIO, Salaire: 100000.00 CHF<br>- Employe: Mireille Roduit, Poste: CEO, Salaire: 100000.00 CHF<br>- Employe: Jeff Phyo, Poste: CFO, Salaire: 60000.00 CHF | - Projet: Projet IA, Budget: 202000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
 
 ### Exemple de résultat sur la console
 Si vous avez correctement réalisé cette application, vous devriez obtenir un affichage ressemblant à ceci pour la première startup :
 ```
+-----------------------------
 Startup: InnovateTech
 Employes:
-- Employe: Marie Dupont, Poste: Développeur, Salaire: 50000.00 CHF
-- Employe: Jean Martin, Poste: Manager, Salaire: 60000.00 CHF
+- DUPONT Marie (Développeuse) [50'000.00 CHF]
+- MARTIN Jean (Manager) [60'000.00 CHF]
 Projets:
-- Projet: Projet Alpha, Budget: 150000.00 CHF, Date de fin: 2024-12-31, Employes: [Marie Dupont]
-- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30, Employes: [Jean Martin]
+- "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [Marie Dupont, Jean Martin]
+- "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
+La startup a 2 employés.
+Le budget total des projets est de 250'000.00 CHF.
+-----------------------------
+-----------------------------
+Startup: BananaTech
+Employes:
+- John Mackey (CIO) [100'000.00 CHF]
+- Mireille Roduit (CEO) [100'000.00 CHF]
+- Jeff Phyo (CFO) [60'000.00 CHF]
+Projets:
+- "Projet IA", Budget: 220'000.00 CHF, Date de fin: 31 décembre 2024 [John Mackey, Mireille Roduit, Jeff Phyo]
+La startup a 3 employés.
+Le budget total des projets est de 220'000.00 CHF.
+-----------------------------
 ```
+## Fonctionnalités supplémentaires
+Une fois tout ce qui précède réalisé et fonctionnel, ajoutiez ces capacités à vos classes ´Startup´ et ´Projets´:
 
+### Startup :
+- **Calcul du résultat annuelle** : on doit pouvoir demander à la startup le résultat en CHF du coût annuel. C'est à dire la somme du salaire de la startup - la somme des projets réalisés. Le résultat peut être négatif ou positif.
+- **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen des employés de la startup. On obtiendra le salaire moyen en cHF.
+
+### Projets
+- **Ajouter la TVA à tous les projets** : on doit pouvoir ajouter la TVA à tous les projets. La TVA est de 8.1 % actuellement en Suise.
+- **Supprimer les projets plus vieux qu'une date donnée** : on doit pouvoir supprimer un projet où la date est plus ancienne que la date donnée.
 
 
 ### Remise
