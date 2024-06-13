@@ -2,7 +2,7 @@
 
 # Contexte général
 Plusieurs `Startups` gèrent ses projets et ses employés de manière très structurée pour assurer une croissance rapide et efficace. Vous devez créer un système en Java pour gérer les employés, les projets et les affectations.
-
+![image](https://github.com/emf-info-d400/2023-2024-E3-Startuuup/assets/3630367/513bf3f2-faf8-43f9-9564-c5dcd2f23db9)
 
 ## ATTENTION
 Commencez par lire cette consigne `avec grande attention` et prenez garde :
