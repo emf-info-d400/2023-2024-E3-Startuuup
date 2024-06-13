@@ -1,7 +1,7 @@
 # 2023-2024 E3 Startuuup
 
 # Contexte général
-Une nouvelle startup, `InnovateTech`, gère ses projets et ses employés de manière très structurée pour assurer une croissance rapide et efficace. Vous devez créer un système en Java pour gérer les employés, les projets et les affectations.
+Plusieurs `Startups` gèrent ses projets et ses employés de manière très structurée pour assurer une croissance rapide et efficace. Vous devez créer un système en Java pour gérer les employés, les projets et les affectations.
 
 
 ## ATTENTION
