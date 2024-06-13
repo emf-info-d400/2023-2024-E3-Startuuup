@@ -118,11 +118,6 @@ Une fois tout ce qui précède réalisé et fonctionnel, ajoutiez ces capacités
 - **Calcul du résultat annuelle** : on doit pouvoir demander à la startup le résultat en CHF du coût annuel. C'est à dire la somme du salaire de la startup - la somme des projets réalisés. Le résultat peut être négatif ou positif.
 - **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen des employés de la startup. On obtiendra le salaire moyen en cHF.
 
-### Projets
-- **Ajouter la TVA à tous les projets** : on doit pouvoir ajouter la TVA à tous les projets. La TVA est de 8.1 % actuellement en Suise.
-- **Supprimer les projets plus vieux qu'une date donnée** : on doit pouvoir supprimer un projet où la date est plus ancienne que la date donnée.
-
-
 ### Remise
 Faites signe au professeur lorsque vous aurez terminé et que vous êtes prêt à rendre. Il vous autorisera à remettre le réseau. Rendez votre travail par push GitHub et quittez rapidement la salle en silence.
 
