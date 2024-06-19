@@ -56,12 +56,13 @@ Toutes ces informations doivent être fournies lors de la création d'un nouveau
 
 Il doit être possible de demander toutes ses caractéristiques à un projet. Par contre son `nom`, son `budget` et sa `date de fin` ne pourront pas être modifiés une fois celui-ci créé.
 
-On doit pouvoir **ajouter** et **retirer** des employés d'un projet. On doit également pouvoir **demander la liste des employés affectés à un projet**.
+On doit pouvoir **ajouter** et **retirer** des employés d'un projet. On doit également pouvoir **demander la liste des employés affectés à un projet**. Pour terminer, on doit pouvoir **obtenir la liste des initiales des employés sur un projet**, qui sera une chaîne du genre "RAM,FRI,RIF" avec les initiales séparées par une virgule.
 
 Lorsqu'on affiche un projet, celui-ci doit se présenter sous la forme :
 ```
 Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 31.12.2024, Employes: [FRI,RAM]
 ```
+N.B. Pour la liste des initiales des employés sur ce projet, pensez à utiliser votre méthode qui fait cela.
 
 ### Startup
 
