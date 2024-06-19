@@ -1,7 +1,9 @@
 # 2023-2024 E3 Startuuup
 
 # Contexte général
-Plusieurs `Startups` gèrent ses projets et ses employés de manière très structurée pour assurer une croissance rapide et efficace. Vous devez créer un système en Java pour gérer les employés, les projets et les affectations.
+Les `Startup` gèrent leurs projets et leurs employés de manière très structurée pour assurer une croissance rapide et efficace.
+
+Vous devez créer un logiciel en Java pour gérer des startups, leurs employés, leurs projets, leurs employées et leurs affectations sur des projets.
 ![image](https://github.com/emf-info-d400/2023-2024-E3-Startuuup/assets/3630367/513bf3f2-faf8-43f9-9564-c5dcd2f23db9)
 
 ## ATTENTION
@@ -9,23 +11,26 @@ Commencez par lire cette consigne `avec grande attention` et prenez garde :
 
 - Les descriptions fonctionnelles sont précises et le choix des mots n'est pas anodin.
 - Faites les points mentionnés avec précision et dans l'ordre indiqué.
-- Revérifiez bien ensuite avoir fait ce qui est demandé.
+- Revérifiez bien avoir fait ce qui est demandé, au fur et à mesure.
 
 # Consigne
-### Employés
-Dans le bon package, vous aller créer une classe permettant de modéliser un employé. Les informations utiles pour correctement définir cette classe sont données ci-dessous en UML :
+### Employé
+Dans le bon package, vous aller créer une classe permettant de modéliser un employé.
 
+Les informations utiles pour correctement définir cette classe sont données ci-dessous en UML :
 ```mermaid
 classDiagram
 
 namespace models {
 
     class Employe {
+        -String initiales
         -String nom
         -String prenom
         -String poste
-        -double Salaire
-        +Employe(String nom, String prenom, String poste, double Salaire)
+        -double salaire
+        +Employe(String initiales, String nom, String prenom, String poste, double salaire)
+        +String getInitiales()
         +String getNom()
         +String getPrenom()
         +String getPoste()
@@ -35,54 +40,81 @@ namespace models {
 
 }
 ```
-Lorsqu'on affiche un employé, celui-ci doit se présenter sous la forme : "DUPONT Marie (Développeuse) [50'000.00 CHF]". (son nom de famille devra être en majusule).
-
-### Projets
-Toujours dans le package `models`, créez une classe nommée `Projet`. Un `Projet` aura plusieurs caractéristiques : son `nom`, le `budget`, la `date de fin` et une liste d'`employés`. Par exemple, un projet peut s'appeler `"Projet Alpha"`, avoir un budget de `150'000.00 CHF`, et une date de fin fixée au `31.12.2024`. Toutes ces informations doivent être fournies lors de la création du projet, sauf la liste des employés, qui pourra accueillir au maximum 5 employés. Il doit être possible de demander toutes ces informations à un projet. Le `nom`, le `budget` et la `date de fin` ne pourront pas être modifiés après coup. On doit pouvoir **ajouter** et **retirer** des employés d'un projet, et **demander la liste des employés affectés à un projet**. Lorsqu'on affiche un projet, celui-ci doit se présenter sous la forme : `"Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024, Employes: [Marie Dupont, Jean Martin]"`.
-
-Utiliser le type `LocalDate` pour la date de fin, voici un exemple de code permettant d'afficher la date au bon format : 
+Lorsqu'on affiche un employé, celui-ci doit se présenter sous la forme : 
 ```
-DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("PATTERN");
-dateFormat.format(dateDeFin);
+RAM / RAMALLO Mario (Manager) [60'000.00 CHF]
+```
+N.B. Le nom de famille est mis en majuscule, tout comme les initiales
+
+### Projet
+
+Toujours dans le package `models`, créez une classe nommée `Projet`.
+
+Un `Projet` aura plusieurs caractéristiques : un `nom`, un `budget`, une `date de fin` et une liste d'`employés` de taille fixe, pouvant accueillir au maximum 5 employés. Par exemple, un projet peut s'appeler `"Projet Alpha"`, avoir un budget de `150'000.00 CHF` et une date de fin fixée au `31.12.2024`.
+
+Toutes ces informations doivent être fournies lors de la création d'un nouveau projet, sauf la liste des employés car on part du principe qu'un projet fraîchement créé n'aura pas encore d'employés travaillant dessus.
+
+Il doit être possible de demander toutes ses caractéristiques à un projet. Par contre son `nom`, son `budget` et sa `date de fin` ne pourront pas être modifiés une fois celui-ci créé.
+
+On doit pouvoir **ajouter** et **retirer** des employés d'un projet. On doit également pouvoir **demander la liste des employés affectés à un projet**.
+
+Lorsqu'on affiche un projet, celui-ci doit se présenter sous la forme :
+```
+Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 31.12.2024, Employes: [FRI,RAM]
 ```
 
 ### Startup
-Dans le package `models`, créez une classe nommée `Startup`. Une `Startup` aura plusieurs caractéristiques : le `nom`, une liste d'`employés` et une liste de `projets`. Par exemple, la startup peut s'appeler `"InnovateTech"`. Le `nom` de la startup doit être fourni lors de la création. Les listes d'employés et de projets seront initialement vides, avec une taille initiale à 0. 
-Il doit être possible d'**ajouter** et de **retirer** des employés et des projets de la startup. On doit pouvoir **affecter un employé à un projet spécifique** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté à un projet de la startup).
-Lorsqu'on affiche une `Startup`, celui-ci se présente sour la forme suivante :
+
+Dans le package `models`, créez une classe nommée `Startup`.
+
+Une `Startup` aura plusieurs caractéristiques : un `nom` (par exemple "InnovateTech"), une liste d'`employés` ainsi qu'une liste de `projets`.
+
+Seul le `nom` de la startup devra être fourni lors de la création d'une nouvelle `Startup`, car on partira du principe que celle-ci n'aura encore aucun employé ni aucun projet.
+
+Contrairement aux projets (ils ont une liste d'employés de taille fixe et sont donc remplis d'employés et d'absences d'employés), on utilisera ici des listes sans "trous", contenant toujours exactement tous les employés et tous les projets concernés. Donc initialement, ces listes d'employés et de projets seront vides, d'une taille initiale 0.
+
+Il doit être possible d'**ajouter** et de **retirer** des employés à une startup. De même, il doit être possible d'**ajouter** et de **retirer** des projets à une startup.
+
+Une starupt doit aussi mettre à disposition une méthode `calculerBudgetTotal()` qui déterminera le total des budgets de tous ses projets, ainsi que `listeEmployes()` qui produira la liste de tous ses employés sans trous.
+
+Pour terminer, on doit également pouvoir **affecter un employé à un projet** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté ou retiré d'un projet de la startup. De même, un employé ne pourra être affecté ou retiré à un projet qui ne serait pas un projet de la startup).
+
+Lorsqu'on affichera une `Startup`, celle-ci se présentera sour la forme suivante :
 ```
 Startup: InnovateTech
 Employes:
-- DUPONT Marie (Développeuse) [50'000.00 CHF]
-- MARTIN Jean (Manager) [60'000.00 CHF]
+- FRI / FRIEDLI Paul (Développeuse) [50'000.00 CHF]
+- RAM / RAMALLO Mario (Manager) [60'000.00 CHF]
 Projets:
-- "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [Marie Dupont, Jean Martin]
-- "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
+- "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31.12.2024 [FRI,RAM]
+- "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30.11.2023 [RIF]
 ```
 
-
-
 ### Application
+
 Dans le `main()` de la classe `Application`, vous devez effectuer plusieurs opérations.
 
-D'abord, créez un tableau de `startups` de 10 éléments, puis remplir ce tableau avec les informations ci-dessous :
+D'abord, créez une liste pouvant accueillir jusqu'à 10 startups.
+
+Ensuite, remplissez ce tableau avec les informations ci-dessous :
 
 | Startup | Employés | Projets | Affectation |
 | :---: | :--- | :--- | :--- |
-| InnovateTech | - Employe: Marie Dupont, Poste: Développeur, Salaire: 50'000.00 CHF<br>- Employe: Jean Martin, Poste: Manager, Salaire: 60'000.00 CHF | - Projet: Projet Alpha, Budget: 150'000.00 CHF, Date de fin: 2024-12-31<br>- Projet: Projet Beta, Budget: 100000.00 CHF, Date de fin: 2023-11-30 | - Projet Alpha: Marie Dupont, Jean Martin<br>- Projet Beta : Jean Martin |
-| BananaTech | - Employe: John Mackey, Poste: CIO, Salaire: 100'000.00 CHF<br>- Employe: Mireille Roduit, Poste: CEO, Salaire: 100'000.00 CHF<br>- Employe: Jeff Phyo, Poste: CFO, Salaire: 60'000.00 CHF | - Projet: Projet IA, Budget: 202'000.00 CHF, Date de fin: 2024-12-31 | - Projet IA: John Mackey, Mireille Roduit, Jeff Phyo  |
+| **InnovateTech** | **FRIEDLI Paul**<br>Initiales: FRI, Poste: Développeur, Salaire: 50'000.00 CHF<br><br>**RAMALLO Mario**<br>Initiales: RAM, Poste: Manager, Salaire: 60'000.00 CHF | **Projet Alpha**<br>Budget: 150'000.00 CHF, Date de fin: 31.12.2024<br><br>**Projet Beta**<br>Budget: 100000.00 CHF, Date de fin: 30.11.2023 | **Projet Alpha** :<br>FRI+RAM<br><br>**Projet Beta** :<br>RIF |
+| **BananaTech** | **MACKEY John**<br>Initiales: MAC, Poste: CIO, Salaire: 100'000.00 CHF<br><br>**RODUIT Mireille**<br>Initiales: ROD, Poste: CEO, Salaire: 100'000.00 CHF<br><br>**PHYO Jeff**<br>Initiales: PHY, Poste: CFO, Salaire: 60'000.00 CHF | **Projet IA**:<br>Budget: 202'000.00 CHF, Date de fin: 31.12.2024 | **Projet IA**:<br>MAC+ROD+PHY |
 
-Enfin, affichez les détails de toutes les startups en utilisant la méthode `static afficherDetails(Startup startup)` ci-dessous 
+Enfin, affichez le détails de chacune de vos startups en utilisant la méthode `static afficherDetails(Startup startup)` qu'il va vous falloir ajouter à la classe `Application`. Son code vous est donné ci-dessous :
+
 ```mermaid
 sequenceDiagram
 
-    alt si startup n'est pas vide
+    alt si startup est bien un objet
         afficherDetails(Startup startup)->>System.out : println("-----------------------------")
         afficherDetails(Startup startup)->>System.out : println(startup)
 
-        afficherDetails(Startup startup)->>startup: listesEmployes()
+        afficherDetails(Startup startup)->>startup: listeEmployes()
         activate startup
-        startup-->>afficherDetails(Startup startup): listesEmployes=
+        startup-->>afficherDetails(Startup startup): listeEmployes=
         deactivate startup
 
         afficherDetails(Startup startup)->>System.out : println("La startup a " + listesEmployes.length + " employés.")
@@ -92,6 +124,7 @@ sequenceDiagram
 ```
 
 ### Exemple de résultat sur la console
+
 Si vous avez correctement réalisé cette application, vous devriez obtenir un affichage ressemblant à ceci pour la première startup :
 ```
 -----------------------------
@@ -117,12 +150,18 @@ La startup a 3 employés.
 Le budget total des projets est de 220000.0 CHF.
 -----------------------------
 ```
+
 ## Fonctionnalités supplémentaires
-Une fois tout ce qui précède réalisé et fonctionnel, ajoutiez ces capacités à vos classes ´Startup´ et ´Projets´:
+Une fois tout ce qui précède réalisé et fonctionnel, ajoutez ce savoir-faire à vos classes ´Startup´ et ´Projet´:
 
 ### Startup :
-- **Calcul du résultat annuelle** : on doit pouvoir demander à la startup le résultat en CHF du coût annuel. C'est à dire la somme du salaire de la startup - la somme des projets réalisés. Le résultat peut être négatif ou positif.
-- **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen des employés de la startup. On obtiendra le salaire moyen en CHF.
 
-### Remise
+- **Moyenne du salaire des employés** : on doit pouvoir demander à la startup quel est le salaire moyen de ses employés.
+
+### Projet :
+
+- **Cout annuel du projet** : on doit pouvoir demander à un projet son coût annuel, c'est-à-dire la somme des salaires de tous les employés qui y sont affectés.
+
+# Remise
+
 Faites signe au professeur lorsque vous aurez terminé et que vous êtes prêt à rendre. Il vous autorisera à remettre le réseau. Rendez votre travail par push GitHub et quittez rapidement la salle en silence.
