@@ -85,7 +85,7 @@ Lorsqu'on affichera une `Startup`, celle-ci se présentera sour la forme suivant
 Startup: InnovateTech
 Employes:
 - FRI / FRIEDLI Paul (Développeuse) [50'000.00 CHF]
-- RAM / RAMALLO Mario (Manager) [60'000.00 CHF]
+- RAM / RAMALHO Mario (Manager) [60'000.00 CHF]
 Projets:
 - "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31.12.2024 [FRI,RAM]
 - "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30.11.2023 [RIF]
