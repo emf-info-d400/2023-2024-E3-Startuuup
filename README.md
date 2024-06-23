@@ -42,7 +42,7 @@ namespace models {
 ```
 Lorsqu'on affiche un employé, celui-ci doit se présenter sous la forme : 
 ```
-RAM / RAMALLO Mario (Manager) [60'000.00 CHF]
+RAM / RAMALHO Mario (Manager) [60'000.00 CHF]
 ```
 N.B. Le nom de famille est mis en majuscule, tout comme les initiales
 
