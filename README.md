@@ -72,23 +72,23 @@ Une `Startup` aura plusieurs caractéristiques : un `nom` (par exemple "Innovate
 
 Seul le `nom` de la startup devra être fourni lors de la création d'une nouvelle `Startup`, car on partira du principe que celle-ci n'aura encore aucun employé ni aucun projet.
 
-Contrairement aux projets (ils ont une liste d'employés de taille fixe et sont donc remplis d'employés et d'absences d'employés), on utilisera ici des listes sans "trous", contenant toujours exactement tous les employés et tous les projets concernés. Donc initialement, ces listes d'employés et de projets seront vides, d'une taille initiale 0.
+On utilisera ici des listes sans "trous", contenant toujours exactement tous les employés et tous les projets concernés. Donc initialement, ces listes d'employés et de projets seront vides, d'une taille initiale 0.
 
 Il doit être possible d'**ajouter** et de **retirer** des employés à une startup. De même, il doit être possible d'**ajouter** et de **retirer** des projets à une startup.
 
-Une starupt doit aussi mettre à disposition une méthode `calculerBudgetTotal()` qui déterminera le total des budgets de tous ses projets, ainsi que `listeEmployes()` qui produira la liste de tous ses employés sans trous.
+Une startup doit aussi mettre à disposition une méthode `calculerBudgetTotal()` qui déterminera le total des budgets de tous ses projets, ainsi que `listeEmployes()` qui produira la liste de tous ses employés sans trous.
 
-Pour terminer, on doit également pouvoir **affecter un employé à un projet** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté ou retiré d'un projet de la startup. De même, un employé ne pourra être affecté ou retiré à un projet qui ne serait pas un projet de la startup).
+Pour terminer, on doit également pouvoir **affecter un employé à un projet** de la startup, et **retirer un employé d'un projet**. (Attention, un employé qui n'est pas dans la startup ne pourra pas être affecté ou retiré d'un projet de la startup).
 
 Lorsqu'on affichera une `Startup`, celle-ci se présentera sour la forme suivante :
 ```
 Startup: InnovateTech
-Employes:
-- FRI / FRIEDLI Paul (Développeuse) [50'000.00 CHF]
-- RAM / RAMALHO Mario (Manager) [60'000.00 CHF]
+Employés:
+- FRI / FRIEDLI Paul (Développeur) [50'000.00 CHF]
+- RIF / RIEDO Fanny (CTO) [60'000.00 CHF]
 Projets:
-- "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31.12.2024 [FRI,RAM]
-- "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30.11.2023 [RIF]
+- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [FRI]
+- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [FRI,RIF]
 ```
 
 ### Application
@@ -101,7 +101,7 @@ Ensuite, remplissez ce tableau avec les informations ci-dessous :
 
 | Startup | Employés | Projets | Affectation |
 | :---: | :--- | :--- | :--- |
-| **InnovateTech** | **FRIEDLI Paul**<br>Initiales: FRI, Poste: Développeur, Salaire: 50'000.00 CHF<br><br>**RAMALLO Mario**<br>Initiales: RAM, Poste: Manager, Salaire: 60'000.00 CHF | **Projet Alpha**<br>Budget: 150'000.00 CHF, Date de fin: 31.12.2024<br><br>**Projet Beta**<br>Budget: 100000.00 CHF, Date de fin: 30.11.2023 | **Projet Alpha** :<br>FRI+RAM<br><br>**Projet Beta** :<br>RIF |
+| **InnovateTech** | **FRIEDLI Paul**<br>Initiales: FRI, Poste: Développeur, Salaire: 50'000.00 CHF<br><br>**RIEDO Fanny**<br>Initiales: RIF, Poste: CTO, Salaire: 60'000.00 CHF | **Projet Alpha**<br>Budget: 150'000.00 CHF, Date de fin: 31.12.2024<br><br>**Projet Beta**<br>Budget: 100000.00 CHF, Date de fin: 30.11.2023 | **Projet Alpha** :<br>FRI+RIF<br><br>**Projet Beta** :<br>RIF |
 | **BananaTech** | **MACKEY John**<br>Initiales: MAC, Poste: CIO, Salaire: 100'000.00 CHF<br><br>**RODUIT Mireille**<br>Initiales: ROD, Poste: CEO, Salaire: 100'000.00 CHF<br><br>**PHYO Jeff**<br>Initiales: PHY, Poste: CFO, Salaire: 60'000.00 CHF | **Projet IA**:<br>Budget: 202'000.00 CHF, Date de fin: 31.12.2024 | **Projet IA**:<br>MAC+ROD+PHY |
 
 Enfin, affichez le détails de chacune de vos startups en utilisant la méthode `static afficherDetails(Startup startup)` qu'il va vous falloir ajouter à la classe `Application`. Son code vous est donné ci-dessous :
@@ -124,32 +124,49 @@ sequenceDiagram
     end    
 ```
 
+### Aide sur la création d'une date spécifique
+```
+import java.util.Calendar;
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        // Utiliser Calendar pour définir une date spécifique
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2000, Calendar.JANUARY, 1, 0, 0, 0);
+        Date specificDate = calendar.getTime();
+        
+        System.out.println("Date spécifique: " + specificDate);
+        // Résultat console : "Date spécifique: 01.01.2000"
+    }
+}
+```
 ### Exemple de résultat sur la console
 
 Si vous avez correctement réalisé cette application, vous devriez obtenir un affichage ressemblant à ceci pour la première startup :
 ```
------------------------------
+-------------------
 Startup: InnovateTech
-Employes:
-- DUPONT Marie (Développeuse) [50'000.00 CHF]
-- MARTIN Jean (Manager) [60'000.00 CHF]
+Employés:
+- FRI / FRIEDLI Paul (Développeur) [50'000.00 CHF]
+- RIF / RIEDO Fanny (CTO) [60'000.00 CHF]
 Projets:
-- "Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [Marie Dupont, Jean Martin]
-- "Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [Jean Martin]
+- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [FRI]
+- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [FRI,RIF]
+
 La startup a 2 employés.
-Le budget total des projets est de 250000.0 CHF.
------------------------------
------------------------------
+Le budget total de la startup est de 250000.0 CHF.
+-------------------
 Startup: BananaTech
-Employes:
-- John Mackey (CIO) [100'000.00 CHF]
-- Mireille Roduit (CEO) [100'000.00 CHF]
-- Jeff Phyo (CFO) [60'000.00 CHF]
+Employés:
+- MAJ / MACKEY John (CIO) [100'000.00 CHF]
+- ROM / RODUIT Mireille (CEO) [100'000.00 CHF]
+- PHJ / PHYO Jeff (CFO) [60'000.00 CHF]
 Projets:
-- "Projet IA", Budget: 220'000.00 CHF, Date de fin: 31 décembre 2024 [John Mackey, Mireille Roduit, Jeff Phyo]
+- "Projet Projet IA", Budget: 220'000.00 CHF, Date de fin: 31 décembre 2024 [MAJ,ROM,PHJ]
+
 La startup a 3 employés.
-Le budget total des projets est de 220000.0 CHF.
------------------------------
+Le budget total de la startup est de 220000.0 CHF.
 ```
 
 ## Fonctionnalités supplémentaires
