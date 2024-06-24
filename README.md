@@ -50,7 +50,7 @@ N.B. Le nom de famille est mis en majuscule, tout comme les initiales
 
 Toujours dans le package `models`, créez une classe nommée `Projet`.
 
-Un `Projet` aura plusieurs caractéristiques : un `nom`, un `budget`, une `date de fin` et une liste d'`employés` de taille fixe, pouvant accueillir au maximum 5 employés. Par exemple, un projet peut s'appeler `"Projet Alpha"`, avoir un budget de `150'000.00 CHF` et une date de fin fixée au `31.12.2024`.
+Un `Projet` aura plusieurs caractéristiques : un `nom`, un `budget`, une `date de fin` et une liste d'`employés` de taille fixe, pouvant accueillir au maximum 5 employés. Par exemple, un projet peut s'appeler `"Projet Alpha"`, avoir un budget de `150'000.00 CHF` et une date de fin fixée au `31.12.2024`. La date peut être stocké sous forme de chaîne de caractères.
 
 Toutes ces informations doivent être fournies lors de la création d'un nouveau projet, sauf la liste des employés car on part du principe qu'un projet fraîchement créé n'aura pas encore d'employés travaillant dessus.
 
@@ -87,8 +87,8 @@ Employés:
 - FRI / FRIEDLI Paul (Développeur) [50'000.00 CHF]
 - RIF / RIEDO Fanny (CTO) [60'000.00 CHF]
 Projets:
-- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [FRI]
-- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [FRI,RIF]
+- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31.12.2024 [FRI]
+- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30.11.2023 [FRI,RIF]
 ```
 
 ### Application
@@ -123,24 +123,6 @@ sequenceDiagram
         afficherDetails(Startup startup)->>System.out : println("-----------------------------")
     end    
 ```
-
-### Aide sur la création d'une date spécifique
-```
-import java.util.Calendar;
-import java.util.Date;
-
-public class Main {
-    public static void main(String[] args) {
-        // Utiliser Calendar pour définir une date spécifique
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2000, Calendar.JANUARY, 1, 0, 0, 0);
-        Date specificDate = calendar.getTime();
-        
-        System.out.println("Date spécifique: " + specificDate);
-        // Résultat console : "Date spécifique: 01.01.2000"
-    }
-}
-```
 ### Exemple de résultat sur la console
 
 Si vous avez correctement réalisé cette application, vous devriez obtenir un affichage ressemblant à ceci pour la première startup :
@@ -151,8 +133,8 @@ Employés:
 - FRI / FRIEDLI Paul (Développeur) [50'000.00 CHF]
 - RIF / RIEDO Fanny (CTO) [60'000.00 CHF]
 Projets:
-- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31 décembre 2024 [FRI]
-- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30 novembre 2023 [FRI,RIF]
+- "Projet Projet Alpha", Budget: 150'000.00 CHF, Date de fin: 31.12.2024 [FRI]
+- "Projet Projet Beta", Budget: 100'000.00 CHF, Date de fin: 30.11.2023 [FRI,RIF]
 
 La startup a 2 employés.
 Le budget total de la startup est de 250000.0 CHF.
@@ -163,7 +145,7 @@ Employés:
 - ROM / RODUIT Mireille (CEO) [100'000.00 CHF]
 - PHJ / PHYO Jeff (CFO) [60'000.00 CHF]
 Projets:
-- "Projet Projet IA", Budget: 220'000.00 CHF, Date de fin: 31 décembre 2024 [MAJ,ROM,PHJ]
+- "Projet Projet IA", Budget: 220'000.00 CHF, Date de fin: 31.12.2024 [MAJ,ROM,PHJ]
 
 La startup a 3 employés.
 Le budget total de la startup est de 220000.0 CHF.
